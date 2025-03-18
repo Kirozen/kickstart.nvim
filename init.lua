@@ -394,6 +394,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'refactoring')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -408,6 +409,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set({ 'n', 'x' }, '<leader>rr', function()
+        require('telescope').extensions.refactoring.refactors()
+      end)
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -691,6 +695,17 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'gopls',
         'gofumpt',
+        'ruff',
+        'html-lsp',
+        'htmx-lsp',
+        'gotestsum',
+        'css-lsp',
+        'delve',
+        'json-lsp',
+        'json-to-struct',
+        'templ',
+        'sqlls',
+        'bash-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -894,7 +909,7 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = true } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -1034,6 +1049,25 @@ require('lazy').setup({
     },
   },
 })
+
+require('neotest').setup {
+  adapters = {
+    require 'neotest-go' {
+      dap = { justMyCode = false },
+      experimental = {
+        test_table = true,
+      },
+      recursive_run = true,
+    },
+    require 'neotest-python' {
+      dap = { justMyCode = false },
+    },
+    require 'neotest-plenary',
+    require 'neotest-vim-test' {
+      ignore_file_types = { 'go', 'vim', 'lua', 'python' },
+    },
+  },
+}
 
 require 'custom.conf.autocmds'
 require 'custom.conf.keymaps'
