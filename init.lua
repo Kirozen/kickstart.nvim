@@ -982,6 +982,11 @@ require('lazy').setup({
         'javascript',
         'make',
         'nginx',
+        'gowork',
+        'gosum',
+        'gotmpl',
+        'comment',
+        'latex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
