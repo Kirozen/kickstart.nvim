@@ -760,7 +760,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'gofumpt' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'isort', 'black' },
+        python = { 'ruff_format' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -1054,25 +1054,6 @@ require('lazy').setup({
     },
   },
 })
-
-require('neotest').setup {
-  adapters = {
-    require 'neotest-go' {
-      dap = { justMyCode = false },
-      experimental = {
-        test_table = true,
-      },
-      recursive_run = true,
-    },
-    require 'neotest-python' {
-      dap = { justMyCode = false },
-    },
-    require 'neotest-plenary',
-    require 'neotest-vim-test' {
-      ignore_file_types = { 'go', 'vim', 'lua', 'python' },
-    },
-  },
-}
 
 require 'custom.conf.autocmds'
 require 'custom.conf.keymaps'
