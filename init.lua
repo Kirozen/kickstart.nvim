@@ -706,6 +706,10 @@ require('lazy').setup({
         'templ',
         'sqlls',
         'bash-language-server',
+        'python-lsp-server',
+        'typescript-language-server',
+        'yaml-language-server',
+        'zls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -760,7 +764,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'gofumpt' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
