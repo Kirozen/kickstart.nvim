@@ -1,10 +1,17 @@
 vim.keymap.set('n', '<S-Tab>', ':bprev<CR>', { noremap = true })
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>bd', function()
+  require('snacks').bufdelete()
+end, { desc = 'Delete Buffer', noremap = true })
+vim.keymap.set('n', '<leader>bl', ':blast<CR>', { desc = 'Last Buffer', noremap = true })
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = 'Next Buffer', noremap = true })
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous Buffer', noremap = true })
+vim.keymap.set('n', '<leader>bf', ':bfirst<CR>', { desc = 'First Buffer', noremap = true })
 vim.keymap.set('n', '<leader>se', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>')
 vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
 
 -- vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Show signature help' })
-vim.keymap.set('i', '<C-k>', function()
+vim.keymap.set({ 'i', 'n' }, '<C-k>', function()
   require('lsp_signature').toggle_float_win()
 end, { silent = true, noremap = true, desc = 'toggle signature help' })
 
@@ -38,6 +45,8 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+--- Neotest
 
 vim.keymap.set('n', '<leader>nr', function()
   require('neotest').run.run()
