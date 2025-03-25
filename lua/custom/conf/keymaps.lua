@@ -78,3 +78,11 @@ end, { desc = 'Show test output' })
 vim.keymap.set('n', '<leader>nw', function()
   require('neotest').watch.toggle(vim.fn.expand '%')
 end, { desc = 'Toggle watching file' })
+
+vim.keymap.set('n', '<leader>tk', function()
+  if vim.o.background == 'dark' then
+    vim.o.background = 'light'
+  else
+    vim.o.background = 'dark'
+  end
+end, { desc = 'Toggle background' })
