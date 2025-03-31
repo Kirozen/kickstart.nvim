@@ -10,11 +10,6 @@ vim.keymap.set('n', '<leader>bf', ':bfirst<CR>', { desc = 'First Buffer', norema
 vim.keymap.set('n', '<leader>se', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>')
 vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
 
--- vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Show signature help' })
-vim.keymap.set({ 'i', 'n' }, '<C-k>', function()
-  require('lsp_signature').toggle_float_win()
-end, { silent = true, noremap = true, desc = 'toggle signature help' })
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
