@@ -278,6 +278,7 @@ return {
       'typescript-language-server',
       'yaml-language-server',
       'zls',
+      'clangd',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
