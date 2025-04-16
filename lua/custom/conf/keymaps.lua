@@ -8,7 +8,6 @@ vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = 'Next Buffer', noremap 
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous Buffer', noremap = true })
 vim.keymap.set('n', '<leader>bf', ':bfirst<CR>', { desc = 'First Buffer', noremap = true })
 vim.keymap.set('n', '<leader>se', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>')
-vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
