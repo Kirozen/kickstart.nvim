@@ -10,5 +10,6 @@ return {
       ['<Left>'] = { 'n', 'x' },
       ['<Right>'] = { 'n', 'x' },
     },
+    disable_mouse = false,
   },
 }
